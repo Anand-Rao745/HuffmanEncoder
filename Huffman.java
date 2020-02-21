@@ -18,11 +18,7 @@ import javax.swing.JFrame;
  */ 
 public class Huffman{
   
-  /**
-   * Scans the encoding text file to generate the initial list of HuffmanNodes.
-   * @param the encoding text file.
-   * @return a sorted ArrayList of HuffmanNodes.
-   */
+
   public static ArrayList scan(String inputFileName) throws FileNotFoundException, IOException{
     ArrayList<HuffmanNode>table= new ArrayList<HuffmanNode>();
     HashMap<Character,Integer> t= new HashMap<Character,Integer>();
@@ -44,22 +40,14 @@ public class Huffman{
     return table;
   }
   
-  /**
-   * Merges two HuffmanNodes.
-   * @param the two HuffmanNodes that will be merged.
-   * @return a combined HuffmanNode.
-   */
+
   public static HuffmanNode merge(HuffmanNode a, HuffmanNode b){
     int sum=(a.frequency+b.frequency);
     HuffmanNode c= new HuffmanNode(null, sum, a, b);
     return c;
   }
   
-  /**
-   * Runs the Huffman encoding algorithm to produce the Huffman tree.
-   * @param the encoding text file.
-   * @return the root node of the Huffman tree.
-   */
+
   public static HuffmanNode buildTree(String inputFileName)throws FileNotFoundException, IOException{
     PriorityQueue<HuffmanNode> queue = new PriorityQueue<HuffmanNode>();
     HuffmanNode root=null;
@@ -77,11 +65,7 @@ public class Huffman{
     return root;
   }
   
-  /**
-   * Traverses the Huffman tree to output the character encoding.
-   * @param the root node of the tree.
-   * @param an arbitrary string.
-   */ 
+
   public static void output(HuffmanNode root, String binary){
     if (root!=null){   
       if (root.left!=null){
@@ -96,10 +80,7 @@ public class Huffman{
     }       
   }
   
-  /**
-   * Scans the input text file, and produces the encoded output file. 
-   * @param the input text file.
-   */  
+
   public static void createFile(String inputFileName)throws IOException, FileNotFoundException{
     PrintStream p1 = new PrintStream(new File("table.txt"));
     System.setOut(p1);
@@ -114,10 +95,7 @@ public class Huffman{
     }
   }
   
-  /**
-   * Launches the program. 
-   * @param args the arguments which includes the file to be read.
-   */    
+   
   public static void main(String[] args) throws FileNotFoundException, IOException{
     try{
       createFile(args[0]);
